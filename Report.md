@@ -8,7 +8,7 @@ The problem involves a robot driving around an square room filled with randomly 
 
 ## Method
 
-I solved this problem by implementing a Double Deep Q Network.  I started from the example DQN code from the DRLND lessons and adapted the learning update to do Double DQN.
+I solved this problem by implementing a Double Deep Q Network. I started from the [example DQN code](https://github.com/udacity/deep-reinforcement-learning/tree/master/dqn) from the DRLND lessons.  I adapted this code to interact with the unity env and upgraded learn() function to do [Double DQN](https://arxiv.org/abs/1509.06461).
 
 ## Results
 
