@@ -1,3 +1,6 @@
+# NOTE: this file is adapted from the original DRLND implementation:
+# https://github.com/udacity/deep-reinforcement-learning/tree/master/dqn
+
 from unityagents import UnityEnvironment
 import torch
 import numpy as np

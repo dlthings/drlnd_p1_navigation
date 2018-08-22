@@ -1,3 +1,6 @@
+# NOTE: this file is adapted from the original DRLND implementation:
+# https://github.com/udacity/deep-reinforcement-learning/tree/master/dqn
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F

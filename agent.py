@@ -1,3 +1,6 @@
+# NOTE: this file is adapted from the original DRLND implementation:
+# https://github.com/udacity/deep-reinforcement-learning/tree/master/dqn
+
 import numpy as np
 import random
 from collections import namedtuple, deque
