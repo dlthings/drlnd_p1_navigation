@@ -10,6 +10,20 @@ The problem involves a robot driving around an square room filled with randomly 
 
 I solved this problem by implementing a Double Deep Q Network. I started from the [example DQN code](https://github.com/udacity/deep-reinforcement-learning/tree/master/dqn) from the DRLND lessons.  I adapted this code to interact with the unity env and upgraded learn() function to do [Double DQN](https://arxiv.org/abs/1509.06461).
 
+DQN works by processing a buffer of experiences (a.k.a. "experience replay") and updates an estimation of the cost to go, Q(s,a), where s is the state and a is the action.  This function is approximated using a deep neural network where s is a continuous input and the Q-values for each discrete a is the output.  Each experience is represented by the tuple (s,a,r,s') where r is the one-step reward and s' is the next state achieved by taking action a at start s.  Given a buffer of experiences, the Q(s,a) approximation is updated in order to minimize the TD-error (a.k.a. "temporal difference error").
+
+Ultimately we will update our estimate of Q(s,a) via gradient descent:
+
+Q'(s,a) = Q(s,a) + alpha * TD-error
+
+where TD-error is computed for each experience tuple.  The TD-error is the difference between the target cost-to-go and the expected based on the current function estimate:
+
+TD-error = Q_target - Q_expected
+Q_target = r + max_a Q(s',a)
+Q_expected = Q(s,a)
+
+In Double DQN we use a separate Q network to model the Q_target calculation that is updated more slowly in order to avoid using a noisy Q estimate during training.
+
 ## Results
 
 My 100-episode average return is shown below.  The algorithm solves the problem (>=13) in around 500 episodes and produces the plot below:
