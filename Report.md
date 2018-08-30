@@ -19,10 +19,20 @@ Q'(s,a) = Q(s,a) + alpha * TD-error
 where TD-error is computed for each experience tuple.  The TD-error is the difference between the target cost-to-go and the expected based on the current function estimate:
 
 TD-error = Q_target - Q_expected
-Q_target = r + max_a Q(s',a)
+Q_target = r + gamma*max_a Q(s',a)
 Q_expected = Q(s,a)
 
 In Double DQN we use a separate Q network to model the Q_target calculation that is updated more slowly in order to avoid using a noisy Q estimate during training.
+
+## Model
+
+I used a deep neural network with two hidden layers of 64 units each.  Each layer is fully connected with ReLU activations.
+
+The replay buffer length, BUFFER_SIZE, was 100000 tuples long and the learning was performed on a BATCH_SIZE of 64.
+
+The local network was updated every (UPDATE_EVERY) 4 steps.
+
+The TD-error was calculated with a discount GAMMA = 0.99 and the learning rate used for gradient descent was ALPHA = 5e-4.
 
 ## Results
 
